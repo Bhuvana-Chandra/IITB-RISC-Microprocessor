@@ -1,0 +1,242 @@
+# Reading pref.tcl
+# do RISC_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/Intel/quartus/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/RISC.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:54 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/RISC.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RISC
+# -- Compiling architecture behave of RISC
+# End time: 22:15:54 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/alu.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:54 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/alu.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity alu
+# -- Compiling architecture arc of alu
+# End time: 22:15:54 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:55 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package basic_components
+# -- Compiling entity INVERTER
+# -- Compiling architecture Equations of INVERTER
+# -- Compiling entity AND_8
+# -- Compiling architecture Equations of AND_8
+# -- Compiling entity AND_v
+# -- Compiling architecture Equations of AND_v
+# -- Compiling entity AND_2
+# -- Compiling architecture Equations of AND_2
+# -- Compiling entity NAND_2
+# -- Compiling architecture Equations of NAND_2
+# -- Compiling entity OR_2
+# -- Compiling architecture Equations of OR_2
+# -- Compiling entity NOR_2
+# -- Compiling architecture Equations of NOR_2
+# -- Compiling entity XOR_2
+# -- Compiling architecture Equations of XOR_2
+# -- Compiling entity XNOR_2
+# -- Compiling architecture Equations of XNOR_2
+# -- Compiling entity HALF_ADDER
+# -- Compiling architecture Equations of HALF_ADDER
+# End time: 22:15:55 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/memory.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:55 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/memory.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity memory
+# -- Compiling architecture arc of memory
+# End time: 22:15:55 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:55 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity register_file
+# -- Compiling architecture arc of register_file
+# End time: 22:15:56 on May 08,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:56 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package basic_components
+# -- Compiling entity adder16
+# -- Compiling architecture arc of adder16
+# End time: 22:15:56 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:56 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package basic_components
+# -- Compiling entity imm_9bit
+# -- Compiling architecture arc of imm_9bit
+# End time: 22:15:56 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/imm_6bit.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:56 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/imm_6bit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package basic_components
+# -- Compiling entity imm_6bit
+# -- Compiling architecture arc of imm_6bit
+# End time: 22:15:57 on May 08,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:57 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package basic_components
+# -- Compiling entity Full_Adder
+# -- Compiling architecture arc of Full_Adder
+# End time: 22:15:57 on May 08,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Intel/Quartus/EE309_project/main_project/nand_16bit.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 22:15:57 on May 08,2022
+# vcom -reportprogress 300 -93 -work work C:/Intel/Quartus/EE309_project/main_project/nand_16bit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package basic_components
+# -- Compiling entity nand_16
+# -- Compiling architecture comp_nand of nand_16
+# End time: 22:15:58 on May 08,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+vsim -gui -l msim_transcript work.risc(behave)
+# vsim -gui -l msim_transcript work.risc(behave) 
+# Start time: 22:16:30 on May 08,2022
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.risc(behave)
+# Loading work.basic_components
+# Loading work.imm_9bit(arc)
+# Loading work.imm_6bit(arc)
+# Loading work.register_file(arc)
+# Loading work.alu(arc)
+# Loading work.adder16(arc)
+# Loading work.full_adder(arc)
+# Loading work.half_adder(equations)
+# Loading work.and_2(equations)
+# Loading work.or_2(equations)
+# Loading work.xor_2(equations)
+# Loading work.nand_16(comp_nand)
+# Loading work.memory(arc)
+add wave -position insertpoint sim:/risc/*
+force -freeze sim:/risc/clk 1 0, 0 {50 ps} -r 100
+force -freeze sim:/risc/clk 1 0, 0 {50 ps} -r 100
+force -freeze sim:/risc/rst 0 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /risc/register_file_main
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /risc/register_file_main
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 150 ps  Iteration: 2  Instance: /risc/register_file_main
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# End time: 22:53:22 on May 08,2022, Elapsed time: 0:36:52
+# Errors: 0, Warnings: 3

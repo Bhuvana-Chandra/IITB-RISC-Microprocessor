@@ -1,0 +1,868 @@
+Analysis & Synthesis report for RISC
+Wed May 11 20:17:23 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |RISC|state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "alu:alu_main|adder16:p_1"
+ 14. Port Connectivity Checks: "register_file:register_file_main"
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed May 11 20:17:23 2022       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; RISC                                        ;
+; Top-level Entity Name           ; RISC                                        ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 2                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; RISC               ; RISC               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                     ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------+---------+
+; RISC.vhd                         ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/RISC.vhd             ;         ;
+; 16bit_adder.vhd                  ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd      ;         ;
+; alu.vhd                          ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/alu.vhd              ;         ;
+; basic_components.vhd             ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd ;         ;
+; imm_9bit.vhd                     ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd         ;         ;
+; imm_6bit.vhd                     ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/imm_6bit.vhd         ;         ;
+; Full_Adder.vhd                   ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd       ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/memory.vhd           ;         ;
+; nand_16bit.vhd                   ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/nand_16bit.vhd       ;         ;
+; Register_file.vhd                ; yes             ; User VHDL File  ; C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd    ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimate of Logic utilization (ALMs needed) ; 0     ;
+;                                             ;       ;
+; Combinational ALUT usage for logic          ; 0     ;
+;     -- 7 input functions                    ; 0     ;
+;     -- 6 input functions                    ; 0     ;
+;     -- 5 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- <=3 input functions                  ; 0     ;
+;                                             ;       ;
+; Dedicated logic registers                   ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 2     ;
+;                                             ;       ;
+; Total DSP Blocks                            ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; rst   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 2     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |RISC                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |RISC               ; RISC        ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |RISC|state                                                                                                                                                                                                                                                                                                                                                                                   ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+------------+
+; Name          ; state.state23 ; state.state22 ; state.state21 ; state.state20 ; state.state19 ; state.state18 ; state.state17 ; state.state16 ; state.state15 ; state.state14 ; state.state13 ; state.state12 ; state.state11 ; state.state10 ; state.state9 ; state.state8 ; state.state7 ; state.state6 ; state.state5 ; state.state4 ; state.state3 ; state.state2 ; state.state1 ; state.Sup ; state.Sres ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+------------+
+; state.Sres    ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0          ;
+; state.Sup     ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1         ; 1          ;
+; state.state1  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0         ; 1          ;
+; state.state2  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0         ; 1          ;
+; state.state3  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0         ; 1          ;
+; state.state4  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state5  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state6  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state7  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state8  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state9  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state10 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state11 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state12 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state13 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state14 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state15 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state16 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state17 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state18 ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state19 ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state20 ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state21 ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state22 ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
+; state.state23 ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 1          ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+------------+
+
+
++-------------------------------------------------------------------+
+; Registers Removed During Synthesis                                ;
++----------------------------------------------+--------------------+
+; Register name                                ; Reason for Removal ;
++----------------------------------------------+--------------------+
+; t2[0..3]                                     ; Lost fanout        ;
+; ir[0..15]                                    ; Lost fanout        ;
+; op_code[0..3]                                ; Lost fanout        ;
+; t2[4..15]                                    ; Lost fanout        ;
+; t1[0..15]                                    ; Lost fanout        ;
+; register_file:register_file_main|regs[0][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][3]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][2]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][2]  ; Lost fanout        ;
+; zero                                         ; Lost fanout        ;
+; register_file:register_file_main|regs[0][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][1]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][0]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][15] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][14] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][13] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][12] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][11] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[3][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[1][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[4][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[5][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[6][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[7][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[2][10] ; Lost fanout        ;
+; register_file:register_file_main|regs[0][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][9]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][8]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][7]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][6]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][5]  ; Lost fanout        ;
+; register_file:register_file_main|regs[0][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[3][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[1][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[4][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[5][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[6][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[7][4]  ; Lost fanout        ;
+; register_file:register_file_main|regs[2][4]  ; Lost fanout        ;
+; mem_addr[0..3]                               ; Lost fanout        ;
+; carry                                        ; Lost fanout        ;
+; mem_addr[4..15]                              ; Lost fanout        ;
+; t3[0..15]                                    ; Lost fanout        ;
+; state.Sres                                   ; Lost fanout        ;
+; state.Sup                                    ; Lost fanout        ;
+; state.state1                                 ; Lost fanout        ;
+; state.state2                                 ; Lost fanout        ;
+; state.state3                                 ; Lost fanout        ;
+; state.state4                                 ; Lost fanout        ;
+; state.state5                                 ; Lost fanout        ;
+; state.state6                                 ; Lost fanout        ;
+; state.state7                                 ; Lost fanout        ;
+; state.state8                                 ; Lost fanout        ;
+; state.state9                                 ; Lost fanout        ;
+; state.state10                                ; Lost fanout        ;
+; state.state11                                ; Lost fanout        ;
+; state.state12                                ; Lost fanout        ;
+; state.state13                                ; Lost fanout        ;
+; state.state14                                ; Lost fanout        ;
+; state.state15                                ; Lost fanout        ;
+; state.state16                                ; Lost fanout        ;
+; state.state17                                ; Lost fanout        ;
+; state.state18                                ; Lost fanout        ;
+; state.state19                                ; Lost fanout        ;
+; state.state20                                ; Lost fanout        ;
+; state.state21                                ; Lost fanout        ;
+; state.state22                                ; Lost fanout        ;
+; state.state23                                ; Lost fanout        ;
+; Total Number of Removed Registers = 239      ;                    ;
++----------------------------------------------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                           ;
++----------------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; Register name                                ; Reason for Removal ; Registers Removed due to This Register                                            ;
++----------------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; t2[3]                                        ; Lost Fanouts       ; state.Sres, state.state1, state.state4, state.state6, state.state7, state.state8, ;
+;                                              ;                    ; state.state11, state.state15, state.state20                                       ;
+; ir[15]                                       ; Lost Fanouts       ; ir[11], state.state10, state.state12, state.state16, state.state19                ;
+; register_file:register_file_main|regs[0][3]  ; Lost Fanouts       ; mem_addr[3], carry, state.state3, state.state13, state.state21                    ;
+; t2[0]                                        ; Lost Fanouts       ; ir[1], ir[0], zero                                                                ;
+; op_code[3]                                   ; Lost Fanouts       ; register_file:register_file_main|regs[2][0], state.state17, state.state23         ;
+; register_file:register_file_main|regs[0][2]  ; Lost Fanouts       ; mem_addr[2], state.state14, state.state22                                         ;
+; register_file:register_file_main|regs[7][3]  ; Lost Fanouts       ; state.Sup, state.state18                                                          ;
+; t1[15]                                       ; Lost Fanouts       ; state.state2                                                                      ;
+; register_file:register_file_main|regs[0][1]  ; Lost Fanouts       ; mem_addr[1]                                                                       ;
+; register_file:register_file_main|regs[0][0]  ; Lost Fanouts       ; mem_addr[0]                                                                       ;
+; register_file:register_file_main|regs[0][15] ; Lost Fanouts       ; mem_addr[15]                                                                      ;
+; register_file:register_file_main|regs[0][14] ; Lost Fanouts       ; mem_addr[14]                                                                      ;
+; register_file:register_file_main|regs[0][13] ; Lost Fanouts       ; mem_addr[13]                                                                      ;
+; register_file:register_file_main|regs[0][12] ; Lost Fanouts       ; mem_addr[12]                                                                      ;
+; register_file:register_file_main|regs[0][11] ; Lost Fanouts       ; mem_addr[11]                                                                      ;
+; register_file:register_file_main|regs[0][10] ; Lost Fanouts       ; mem_addr[10]                                                                      ;
+; register_file:register_file_main|regs[0][9]  ; Lost Fanouts       ; mem_addr[9]                                                                       ;
+; register_file:register_file_main|regs[0][8]  ; Lost Fanouts       ; mem_addr[8]                                                                       ;
+; register_file:register_file_main|regs[0][7]  ; Lost Fanouts       ; mem_addr[7]                                                                       ;
+; register_file:register_file_main|regs[0][6]  ; Lost Fanouts       ; mem_addr[6]                                                                       ;
+; register_file:register_file_main|regs[0][5]  ; Lost Fanouts       ; mem_addr[5]                                                                       ;
+; register_file:register_file_main|regs[0][4]  ; Lost Fanouts       ; mem_addr[4]                                                                       ;
+; t3[0]                                        ; Lost Fanouts       ; state.state5                                                                      ;
++----------------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[7][6]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[0][5]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[1][15] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[2][8]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[3][10] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[4][9]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[5][13] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|register_file:register_file_main|regs[6][2]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |RISC|mem_addr[15]                                 ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; Yes        ; |RISC|t3[15]                                       ;
+; 8:1                ; 15 bits   ; 75 LEs        ; 60 LEs               ; 15 LEs                 ; Yes        ; |RISC|t2[4]                                        ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |RISC|t1[1]                                        ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |RISC|register_file:register_file_main|Mux31       ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |RISC|register_file:register_file_main|Mux11       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |RISC|Selector91                                   ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |RISC|Selector207                                  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |RISC|Selector141                                  ;
+; 5:1                ; 15 bits   ; 45 LEs        ; 45 LEs               ; 0 LEs                  ; No         ; |RISC|Selector108                                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 64 LEs               ; -16 LEs                ; No         ; |RISC|Selector98                                   ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |RISC|Selector127                                  ;
+; 39:1               ; 12 bits   ; 312 LEs       ; 168 LEs              ; 144 LEs                ; No         ; |RISC|state                                        ;
+; 40:1               ; 2 bits    ; 52 LEs        ; 20 LEs               ; 32 LEs                 ; No         ; |RISC|state                                        ;
+; 41:1               ; 2 bits    ; 54 LEs        ; 20 LEs               ; 34 LEs                 ; No         ; |RISC|state                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "alu:alu_main|adder16:p_1" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; cin  ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "register_file:register_file_main" ;
++-----------+-------+----------+-------------------------------+
+; Port      ; Type  ; Severity ; Details                       ;
++-----------+-------+----------+-------------------------------+
+; pc_writer ; Input ; Info     ; Stuck at VCC                  ;
++-----------+-------+----------+-------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed May 11 20:16:54 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISC -c RISC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file risc.vhd
+    Info (12022): Found design unit 1: RISC-behave File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 15
+    Info (12023): Found entity 1: RISC File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file 16bit_adder.vhd
+    Info (12022): Found design unit 1: adder16-arc File: C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd Line: 13
+    Info (12023): Found entity 1: adder16 File: C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu-arc File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 15
+    Info (12023): Found entity 1: alu File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 8
+Info (12021): Found 21 design units, including 10 entities, in source file basic_components.vhd
+    Info (12022): Found design unit 1: basic_components File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 3
+    Info (12022): Found design unit 2: INVERTER-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 51
+    Info (12022): Found design unit 3: AND_8-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 62
+    Info (12022): Found design unit 4: AND_v-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 79
+    Info (12022): Found design unit 5: AND_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 106
+    Info (12022): Found design unit 6: NAND_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 117
+    Info (12022): Found design unit 7: OR_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 128
+    Info (12022): Found design unit 8: NOR_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 139
+    Info (12022): Found design unit 9: XOR_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 151
+    Info (12022): Found design unit 10: XNOR_2-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 162
+    Info (12022): Found design unit 11: HALF_ADDER-Equations File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 173
+    Info (12023): Found entity 1: INVERTER File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 47
+    Info (12023): Found entity 2: AND_8 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 58
+    Info (12023): Found entity 3: AND_v File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 76
+    Info (12023): Found entity 4: AND_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 102
+    Info (12023): Found entity 5: NAND_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 113
+    Info (12023): Found entity 6: OR_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 124
+    Info (12023): Found entity 7: NOR_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 135
+    Info (12023): Found entity 8: XOR_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 147
+    Info (12023): Found entity 9: XNOR_2 File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 158
+    Info (12023): Found entity 10: HALF_ADDER File: C:/Intel/Quartus/EE309_project/main_project/basic_components.vhd Line: 169
+Info (12021): Found 2 design units, including 1 entities, in source file imm_9bit.vhd
+    Info (12022): Found design unit 1: imm_9bit-arc File: C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd Line: 15
+    Info (12023): Found entity 1: imm_9bit File: C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file imm_6bit.vhd
+    Info (12022): Found design unit 1: imm_6bit-arc File: C:/Intel/Quartus/EE309_project/main_project/imm_6bit.vhd Line: 14
+    Info (12023): Found entity 1: imm_6bit File: C:/Intel/Quartus/EE309_project/main_project/imm_6bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file full_adder.vhd
+    Info (12022): Found design unit 1: Full_Adder-arc File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 13
+    Info (12023): Found entity 1: Full_Adder File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: memory-arc File: C:/Intel/Quartus/EE309_project/main_project/memory.vhd Line: 19
+    Info (12023): Found entity 1: memory File: C:/Intel/Quartus/EE309_project/main_project/memory.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file nand_16bit.vhd
+    Info (12022): Found design unit 1: nand_16-comp_nand File: C:/Intel/Quartus/EE309_project/main_project/nand_16bit.vhd Line: 13
+    Info (12023): Found entity 1: nand_16 File: C:/Intel/Quartus/EE309_project/main_project/nand_16bit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info (12022): Found design unit 1: register_file-arc File: C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd Line: 16
+    Info (12023): Found entity 1: register_file File: C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd Line: 8
+Info (12127): Elaborating entity "RISC" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "t1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "t2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "t3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "t4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "ir" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(76): signal "op_code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at RISC.vhd(77): signal "zero" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 77
+Warning (10492): VHDL Process Statement warning at RISC.vhd(77): signal "carry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 77
+Warning (10492): VHDL Process Statement warning at RISC.vhd(78): signal "mem_addr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 78
+Warning (10492): VHDL Process Statement warning at RISC.vhd(101): signal "mem_addr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 101
+Warning (10492): VHDL Process Statement warning at RISC.vhd(102): signal "mem_dout" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 102
+Warning (10492): VHDL Process Statement warning at RISC.vhd(141): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 141
+Warning (10492): VHDL Process Statement warning at RISC.vhd(142): signal "rdata2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 142
+Warning (10492): VHDL Process Statement warning at RISC.vhd(157): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 157
+Warning (10492): VHDL Process Statement warning at RISC.vhd(187): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 187
+Warning (10492): VHDL Process Statement warning at RISC.vhd(190): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 190
+Warning (10492): VHDL Process Statement warning at RISC.vhd(196): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 196
+Warning (10492): VHDL Process Statement warning at RISC.vhd(199): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 199
+Warning (10492): VHDL Process Statement warning at RISC.vhd(205): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 205
+Warning (10492): VHDL Process Statement warning at RISC.vhd(208): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 208
+Warning (10492): VHDL Process Statement warning at RISC.vhd(211): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 211
+Warning (10492): VHDL Process Statement warning at RISC.vhd(212): signal "rdata2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 212
+Warning (10492): VHDL Process Statement warning at RISC.vhd(216): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 216
+Warning (10492): VHDL Process Statement warning at RISC.vhd(220): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 220
+Warning (10492): VHDL Process Statement warning at RISC.vhd(223): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 223
+Warning (10492): VHDL Process Statement warning at RISC.vhd(233): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 233
+Warning (10492): VHDL Process Statement warning at RISC.vhd(235): signal "sel6_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 235
+Warning (10492): VHDL Process Statement warning at RISC.vhd(244): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 244
+Warning (10492): VHDL Process Statement warning at RISC.vhd(247): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 247
+Warning (10492): VHDL Process Statement warning at RISC.vhd(260): signal "sel9_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 260
+Warning (10492): VHDL Process Statement warning at RISC.vhd(277): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 277
+Warning (10492): VHDL Process Statement warning at RISC.vhd(279): signal "sel6_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 279
+Warning (10492): VHDL Process Statement warning at RISC.vhd(285): signal "z_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 285
+Warning (10492): VHDL Process Statement warning at RISC.vhd(288): signal "car_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 288
+Warning (10492): VHDL Process Statement warning at RISC.vhd(291): signal "mem_dout" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 291
+Warning (10492): VHDL Process Statement warning at RISC.vhd(302): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 302
+Warning (10492): VHDL Process Statement warning at RISC.vhd(313): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 313
+Warning (10492): VHDL Process Statement warning at RISC.vhd(325): signal "mem_dout" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 325
+Warning (10492): VHDL Process Statement warning at RISC.vhd(335): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 335
+Warning (10492): VHDL Process Statement warning at RISC.vhd(342): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 342
+Warning (10492): VHDL Process Statement warning at RISC.vhd(362): signal "rdata2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 362
+Warning (10492): VHDL Process Statement warning at RISC.vhd(372): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 372
+Warning (10492): VHDL Process Statement warning at RISC.vhd(380): signal "mem_addr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 380
+Warning (10492): VHDL Process Statement warning at RISC.vhd(395): signal "rdata2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 395
+Warning (10492): VHDL Process Statement warning at RISC.vhd(399): signal "sel9_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 399
+Warning (10492): VHDL Process Statement warning at RISC.vhd(401): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 401
+Warning (10492): VHDL Process Statement warning at RISC.vhd(410): signal "rdata1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 410
+Warning (10492): VHDL Process Statement warning at RISC.vhd(420): signal "sel9_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 420
+Warning (10492): VHDL Process Statement warning at RISC.vhd(422): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 422
+Warning (10492): VHDL Process Statement warning at RISC.vhd(427): signal "mem_addr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 427
+Warning (10492): VHDL Process Statement warning at RISC.vhd(429): signal "sel6_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 429
+Warning (10492): VHDL Process Statement warning at RISC.vhd(431): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 431
+Warning (10492): VHDL Process Statement warning at RISC.vhd(439): signal "mem_addr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 439
+Warning (10492): VHDL Process Statement warning at RISC.vhd(442): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 442
+Warning (10492): VHDL Process Statement warning at RISC.vhd(443): signal "alu_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 443
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "mem_wr", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "mem_rd", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rwr", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rf_rst", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "mem_add", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rA1", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rA2", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "alu_x", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "alu_y", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "alu_op", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rdata3", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rA3", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "sel6_in", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "sel9_in", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "sel9_type", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "mem_din", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rpc_wr", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at RISC.vhd(68): inferring latch(es) for signal or variable "rdata_PC", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata_PC[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rpc_wr" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_din[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_type" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel9_in[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "sel6_in[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA3[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA3[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA3[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rdata3[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_op" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_y[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "alu_x[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA2[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA2[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA2[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA1[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA1[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rA1[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[0]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[1]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[2]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[3]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[4]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[5]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[6]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[7]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[8]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[9]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[10]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[11]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[12]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[13]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[14]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_add[15]" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rf_rst" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "rwr" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_rd" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (10041): Inferred latch for "mem_wr" at RISC.vhd(68) File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 68
+Info (12128): Elaborating entity "imm_9bit" for hierarchy "imm_9bit:sel9_reg" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 60
+Warning (10631): VHDL Process Statement warning at imm_9bit.vhd(18): inferring latch(es) for signal or variable "y", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/imm_9bit.vhd Line: 18
+Info (12128): Elaborating entity "imm_6bit" for hierarchy "imm_6bit:sel6_reg" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 61
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:register_file_main" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 63
+Warning (10492): VHDL Process Statement warning at Register_file.vhd(51): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd Line: 51
+Warning (10492): VHDL Process Statement warning at Register_file.vhd(52): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Intel/Quartus/EE309_project/main_project/Register_file.vhd Line: 52
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_main" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 64
+Warning (10540): VHDL Signal Declaration warning at alu.vhd(17): used explicit default value for signal "carry2" because signal was never assigned a value File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 17
+Warning (10631): VHDL Process Statement warning at alu.vhd(38): inferring latch(es) for signal or variable "z", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at alu.vhd(38): inferring latch(es) for signal or variable "cout", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at alu.vhd(38): inferring latch(es) for signal or variable "eq", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "eq" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "cout" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[0]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[1]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[2]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[3]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[4]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[5]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[6]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[7]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[8]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[9]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[10]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[11]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[12]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[13]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[14]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (10041): Inferred latch for "z[15]" at alu.vhd(38) File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 38
+Info (12128): Elaborating entity "adder16" for hierarchy "alu:alu_main|adder16:p_1" File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 31
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "alu:alu_main|adder16:p_1|Full_Adder:full_adder0" File: C:/Intel/Quartus/EE309_project/main_project/16bit_adder.vhd Line: 21
+Info (12128): Elaborating entity "HALF_ADDER" for hierarchy "alu:alu_main|adder16:p_1|Full_Adder:full_adder0|HALF_ADDER:half_1" File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 16
+Info (12128): Elaborating entity "AND_2" for hierarchy "alu:alu_main|adder16:p_1|Full_Adder:full_adder0|AND_2:and_1" File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 19
+Info (12128): Elaborating entity "OR_2" for hierarchy "alu:alu_main|adder16:p_1|Full_Adder:full_adder0|OR_2:or_1" File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 20
+Info (12128): Elaborating entity "XOR_2" for hierarchy "alu:alu_main|adder16:p_1|Full_Adder:full_adder0|XOR_2:xor_1" File: C:/Intel/Quartus/EE309_project/main_project/Full_Adder.vhd Line: 22
+Info (12128): Elaborating entity "nand_16" for hierarchy "alu:alu_main|nand_16:p_2" File: C:/Intel/Quartus/EE309_project/main_project/alu.vhd Line: 32
+Info (12128): Elaborating entity "memory" for hierarchy "memory:mem_main" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 65
+Warning (10631): VHDL Process Statement warning at memory.vhd(31): inferring latch(es) for signal or variable "data_out", which holds its previous value in one or more paths through the process File: C:/Intel/Quartus/EE309_project/main_project/memory.vhd Line: 31
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "memory:mem_main|arr" is uninferred due to asynchronous read logic File: C:/Intel/Quartus/EE309_project/main_project/memory.vhd Line: 21
+Info (17049): 239 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "rst" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 11
+    Warning (15610): No output dependent on input pin "clk" File: C:/Intel/Quartus/EE309_project/main_project/RISC.vhd Line: 11
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 85 warnings
+    Info: Peak virtual memory: 4851 megabytes
+    Info: Processing ended: Wed May 11 20:17:23 2022
+    Info: Elapsed time: 00:00:29
+    Info: Total CPU time (on all processors): 00:00:59
+
+
